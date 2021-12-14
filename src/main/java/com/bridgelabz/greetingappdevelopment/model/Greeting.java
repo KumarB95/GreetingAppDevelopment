@@ -1,4 +1,4 @@
-package com.bridgelabz.greetingappdevelopment;
+package com.bridgelabz.greetingappdevelopment.model;
 
 public class Greeting {
     private long id;
