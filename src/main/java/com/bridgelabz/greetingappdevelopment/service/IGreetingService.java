@@ -12,4 +12,5 @@ public interface IGreetingService {
     String greetingMessageByName(UserDto userDto);
     User getById(long id);
     List<User> getAllGreetingMessages();
+    User updateGreetMessage(long id, UserDto userDto);
 }
