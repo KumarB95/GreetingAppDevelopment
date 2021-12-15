@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -60,5 +61,10 @@ public class GreeatingController {
     @GetMapping("/find")
     public User findGreetById(@RequestParam long id) {
     return greetingService.getById(id);
+    }
+
+    @GetMapping("/allgreetings")
+    public List<User> findAllGreeting() {
+        return greetingService.getAllGreetingMessages();
     }
 }
