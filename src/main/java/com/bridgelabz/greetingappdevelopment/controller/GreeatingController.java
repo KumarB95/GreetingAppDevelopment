@@ -2,8 +2,11 @@ package com.bridgelabz.greetingappdevelopment.controller;
 
 import com.bridgelabz.greetingappdevelopment.dto.UserDto;
 import com.bridgelabz.greetingappdevelopment.model.Greeting;
-import com.bridgelabz.greetingappdevelopment.service.IGreatingService;
+import com.bridgelabz.greetingappdevelopment.model.User;
+import com.bridgelabz.greetingappdevelopment.repository.IGreetingRepository;
+import com.bridgelabz.greetingappdevelopment.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -11,6 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class GreeatingController {
     private static final String template = "Hello, %s!";
+    private static final String template2 = "Hello, %s , %s!";
     private final AtomicLong counter = new AtomicLong();
 //  UC1
     /*
@@ -34,11 +38,11 @@ public class GreeatingController {
 
 //  UC2
     @Autowired
-    private IGreatingService greetingService;
-    /*
-       *curl localhost:8080/greeting/service
-       @return={id =1 , content="hello world!}
-    */
+    IGreetingService greetingService;
+////    /*
+//       *curl localhost:8080/greeting/service
+//       @return={id =1 , content="hello world!}
+//    */
     @GetMapping("greeting/service")
     public Greeting greeting() {
         return greetingService.greetingMessage();
@@ -46,6 +50,11 @@ public class GreeatingController {
 //  UC3
     @PostMapping("/greeting")
     public String greetingMessage(@RequestBody UserDto userDto) {
+        
         return greetingService.greetingMessageByName(userDto);
     }
+
+//    public void save(User user){
+//            IGreetingRepository.save(user);
+//    }
 }
