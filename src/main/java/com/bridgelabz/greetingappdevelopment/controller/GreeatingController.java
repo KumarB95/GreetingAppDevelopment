@@ -57,4 +57,8 @@ public class GreeatingController {
 //    public void save(User user){
 //            IGreetingRepository.save(user);
 //    }
+    @GetMapping("/find")
+    public User findGreetById(@RequestParam long id) {
+    return greetingService.getById(id);
+    }
 }
